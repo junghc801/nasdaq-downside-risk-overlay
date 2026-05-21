@@ -1,0 +1,7 @@
+Scenario,Exposure_Diff_Days,Signal_Diff_Days,Near_40_60_Count,Near_45_55_Count
+ema3_l0.40_u0.60,186,94,92,0
+ema3_l0.45_u0.55,94,94,92,0
+ema5_l0.45_u0.55,94,94,92,0
+ema10_l0.45_u0.55,94,94,92,0
+ema10_l0.40_u0.60,186,94,92,0
+ema20_l0.45_u0.55,94,94,92,0

@@ -1,0 +1,9 @@
+pandas
+numpy
+yfinance
+fredapi
+matplotlib
+seaborn
+scikit-learn
+xgboost
+python-dotenv
