@@ -11,13 +11,25 @@ This repository contains a research prototype for a NASDAQ downside-risk overlay
 
 ## Main files
 
-- `quant_strategy_v4.py`: end-to-end research and backtest script
-- `Final_Quant_Project_Package_v4_KR.md`: main portfolio report in Korean
-- `Quant_Project_Technical_Report_v4_KR.md`: technical report in Korean
-- `Quant_Project_Blog_Summary_v4_KR.md`: high-level project summary in Korean
-- `Quant_Project_Glossary_v4_KR.md`: glossary in Korean
-- `final_backtesting_v4.png`: backtest comparison chart
-- `*_v4.csv`: diagnostics, sensitivity, and stress-test outputs
+- `src/quant_strategy_v4.py`: end-to-end research and backtest script
+- `docs/Final_Quant_Project_Package_v4_KR.md`: main portfolio report in Korean
+- `docs/Quant_Project_Technical_Report_v4_KR.md`: technical report in Korean
+- `docs/Quant_Project_Glossary_v4_KR.md`: glossary in Korean
+- `outputs/figures/final_backtesting_v4.png`: backtest comparison chart
+- `outputs/csv/*_v4.csv`: diagnostics, sensitivity, and stress-test outputs
+
+## Repository layout
+
+```text
+.
+├── src/              # Strategy and backtest code
+├── docs/             # Korean reports and glossary
+├── docs/archive/     # Earlier archived report drafts
+├── outputs/csv/      # Generated diagnostic tables
+├── outputs/figures/  # Generated charts
+├── .env.example      # Local environment template
+└── requirements.txt
+```
 
 ## Setup
 
@@ -37,7 +49,7 @@ pip install -r requirements.txt
 4. Run the strategy script:
 
 ```bash
-python quant_strategy_v4.py
+python src/quant_strategy_v4.py
 ```
 
 ## Important note

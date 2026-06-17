@@ -155,7 +155,7 @@ feature-group ablation은 최종 PnL보다 PR-AUC를 더 크게 바꿉니다.
 즉, 피처 블록별로 ranking 품질 차이는 존재하지만 그 차이의 상당 부분이 exposure-conversion 계층에서 흡수되고 있습니다.
 
 ### 9.4 위험 Decile
-`risk_decile_summary_v4.csv`를 보면 realized event rate 기준 확률 ranking이 완벽하게 단조적이지는 않습니다.  
+`../outputs/csv/risk_decile_summary_v4.csv`를 보면 realized event rate 기준 확률 ranking이 완벽하게 단조적이지는 않습니다.  
 이는 중요한 경고 신호입니다. calibration이 해석 가능성을 높였을 수는 있지만, 확률 표면은 아직 충분히 매끄럽지 않고 decile monotonicity도 불완전합니다.
 
 ## 10. 한계
@@ -173,14 +173,14 @@ feature-group ablation은 최종 PnL보다 PR-AUC를 더 크게 바꿉니다.
 "이 전략은 정적 de-risking보다 더 규율 있는 downside-risk overlay를 만들며, 샤프 1 이상과 buy-and-hold 대비 유의미하게 낮은 drawdown을 제공한다."
 
 ## 12. 파일 목록
-- `quant_strategy_v4.py`
-- `final_backtesting_v4.png`
-- `cost_sensitivity_v4.csv`
-- `stress_analysis_v4.csv`
-- `target_sensitivity_v4.csv`
-- `signal_sensitivity_v4.csv`
-- `signal_diagnostics_v4.csv`
-- `feature_ablation_v4.csv`
-- `risk_decile_summary_v4.csv`
+- `../src/quant_strategy_v4.py`
+- `../outputs/figures/final_backtesting_v4.png`
+- `../outputs/csv/cost_sensitivity_v4.csv`
+- `../outputs/csv/stress_analysis_v4.csv`
+- `../outputs/csv/target_sensitivity_v4.csv`
+- `../outputs/csv/signal_sensitivity_v4.csv`
+- `../outputs/csv/signal_diagnostics_v4.csv`
+- `../outputs/csv/feature_ablation_v4.csv`
+- `../outputs/csv/risk_decile_summary_v4.csv`
 
 

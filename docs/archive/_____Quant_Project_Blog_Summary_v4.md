@@ -93,12 +93,12 @@ The stronger and more honest claim is:
 **this is a materially improved downside-risk overlay research package with defensible validation and a better drawdown profile than passive exposure.**
 
 ## Files worth opening
-- [`final_backtesting_v4.png`](C:/Users/user/claude_test/quant_learning/quant_model_v4/final_backtesting_v4.png)
-- [`cost_sensitivity_v4.csv`](C:/Users/user/claude_test/quant_learning/quant_model_v4/cost_sensitivity_v4.csv)
-- [`stress_analysis_v4.csv`](C:/Users/user/claude_test/quant_learning/quant_model_v4/stress_analysis_v4.csv)
-- [`target_sensitivity_v4.csv`](C:/Users/user/claude_test/quant_learning/quant_model_v4/target_sensitivity_v4.csv)
-- [`signal_sensitivity_v4.csv`](C:/Users/user/claude_test/quant_learning/quant_model_v4/signal_sensitivity_v4.csv)
-- [`feature_ablation_v4.csv`](C:/Users/user/claude_test/quant_learning/quant_model_v4/feature_ablation_v4.csv)
+- [`final_backtesting_v4.png`](../../outputs/figures/final_backtesting_v4.png)
+- [`cost_sensitivity_v4.csv`](../../outputs/csv/cost_sensitivity_v4.csv)
+- [`stress_analysis_v4.csv`](../../outputs/csv/stress_analysis_v4.csv)
+- [`target_sensitivity_v4.csv`](../../outputs/csv/target_sensitivity_v4.csv)
+- [`signal_sensitivity_v4.csv`](../../outputs/csv/signal_sensitivity_v4.csv)
+- [`feature_ablation_v4.csv`](../../outputs/csv/feature_ablation_v4.csv)
 
 If I were presenting this in an interview, I would not lead with "I built a market-beating model."
 I would lead with:

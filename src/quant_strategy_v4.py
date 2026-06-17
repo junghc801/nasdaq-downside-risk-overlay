@@ -13,13 +13,19 @@ from sklearn.model_selection import TimeSeriesSplit
 from sklearn.metrics import accuracy_score, average_precision_score, brier_score_loss, log_loss
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
-from dotenv import load_dotenv
 
 # ==========================================
 # [환경 설정]
 # ==========================================
-ENV_PATH = Path(__file__).resolve().parent / '.env'
-load_dotenv(ENV_PATH)
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+ENV_PATH = PROJECT_ROOT / '.env'
+
+if ENV_PATH.exists():
+    for line in ENV_PATH.read_text(encoding='utf-8').splitlines():
+        if not line or line.strip().startswith('#') or '=' not in line:
+            continue
+        key, value = line.split('=', 1)
+        os.environ.setdefault(key.strip(), value.strip())
 
 FRED_API_KEY = os.getenv('FRED_API_KEY')
 if not FRED_API_KEY:
@@ -30,7 +36,10 @@ if not FRED_API_KEY:
 fred = Fred(api_key=FRED_API_KEY)
 start_date = '2019-01-01'
 end_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-OUTPUT_DIR = Path(__file__).resolve().parent
+OUTPUT_CSV_DIR = PROJECT_ROOT / 'outputs' / 'csv'
+OUTPUT_FIGURE_DIR = PROJECT_ROOT / 'outputs' / 'figures'
+OUTPUT_CSV_DIR.mkdir(parents=True, exist_ok=True)
+OUTPUT_FIGURE_DIR.mkdir(parents=True, exist_ok=True)
 
 # 핵심 종목 리스트 (유동성 베타 분석용)
 core_stocks = ['AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'TSLA', 'META']
@@ -362,7 +371,7 @@ risk_decile_summary = decile_df.groupby('Risk_Decile').agg(
     Avg_Forward_Drawdown=('Forward_Drawdown', 'mean'),
     Count=('Target', 'size')
 ).reset_index()
-risk_decile_summary.to_csv(OUTPUT_DIR / 'risk_decile_summary_v4.csv', index=False)
+risk_decile_summary.to_csv(OUTPUT_CSV_DIR / 'risk_decile_summary_v4.csv', index=False)
 
 print(f"최적 파라미터(마지막 폴드): {best_params_list[-1]}")
 print(f"정확도 (Purged Accuracy): {accuracy_score(test_actual, test_pred):.4f}")
@@ -721,7 +730,7 @@ for horizon, threshold in [(10, -0.03), (10, -0.05), (20, -0.05), (20, -0.07), (
     })
 
 target_sensitivity = pd.DataFrame(target_sensitivity_rows)
-target_sensitivity.to_csv(OUTPUT_DIR / 'target_sensitivity_v4.csv', index=False)
+target_sensitivity.to_csv(OUTPUT_CSV_DIR / 'target_sensitivity_v4.csv', index=False)
 
 signal_sensitivity_rows = []
 for ema_span, lower, upper in [(3, 0.40, 0.60), (3, 0.45, 0.55), (5, 0.45, 0.55), (10, 0.45, 0.55), (10, 0.40, 0.60), (20, 0.45, 0.55)]:
@@ -748,7 +757,7 @@ for ema_span, lower, upper in [(3, 0.40, 0.60), (3, 0.45, 0.55), (5, 0.45, 0.55)
     })
 
 signal_sensitivity = pd.DataFrame(signal_sensitivity_rows)
-signal_sensitivity.to_csv(OUTPUT_DIR / 'signal_sensitivity_v4.csv', index=False)
+signal_sensitivity.to_csv(OUTPUT_CSV_DIR / 'signal_sensitivity_v4.csv', index=False)
 
 diagnostic_rows = []
 base_exposure = df_probs['Exposure']
@@ -766,7 +775,7 @@ for ema_span, lower, upper in [(3, 0.40, 0.60), (3, 0.45, 0.55), (5, 0.45, 0.55)
     })
 
 signal_diagnostics = pd.DataFrame(diagnostic_rows)
-signal_diagnostics.to_csv(OUTPUT_DIR / 'signal_diagnostics_v4.csv', index=False)
+signal_diagnostics.to_csv(OUTPUT_CSV_DIR / 'signal_diagnostics_v4.csv', index=False)
 
 feature_groups = {
     'Full Model': list(X.columns),
@@ -800,7 +809,7 @@ for group_name, columns in feature_groups.items():
     })
 
 feature_ablation = pd.DataFrame(feature_ablation_rows)
-feature_ablation.to_csv(OUTPUT_DIR / 'feature_ablation_v4.csv', index=False)
+feature_ablation.to_csv(OUTPUT_CSV_DIR / 'feature_ablation_v4.csv', index=False)
 
 # Transaction cost sensitivity
 cost_scenarios = [0.0, 0.0005, 0.0010, 0.0015, 0.0030, 0.0050]
@@ -818,7 +827,7 @@ for cost in cost_scenarios:
 cost_sensitivity = pd.DataFrame(cost_sensitivity_rows)[
     ['Cost_Bps', 'Final_Return', 'Sharpe', 'MDD', 'Avg_Exposure', 'Turnover']
 ]
-cost_sensitivity.to_csv(OUTPUT_DIR / 'cost_sensitivity_v4.csv', index=False)
+cost_sensitivity.to_csv(OUTPUT_CSV_DIR / 'cost_sensitivity_v4.csv', index=False)
 
 print("\n--- Transaction Cost Sensitivity ---")
 print(cost_sensitivity.to_string(index=False, formatters={
@@ -889,7 +898,7 @@ if window > 5:
     )
 
 stress_analysis = pd.DataFrame(stress_rows)
-stress_analysis.to_csv(OUTPUT_DIR / 'stress_analysis_v4.csv', index=False)
+stress_analysis.to_csv(OUTPUT_CSV_DIR / 'stress_analysis_v4.csv', index=False)
 
 print("\n--- Stress Period Analysis ---")
 print(stress_analysis.to_string(index=False, formatters={
@@ -913,7 +922,7 @@ plt.plot(vol_only_df['Cum_Strategy'], label='Vol Scaling Only', color='purple', 
 plt.title("Backtest v4: Downside-Risk Target & Hold Signals")
 plt.legend()
 plt.grid(True, alpha=0.3)
-plt.savefig(OUTPUT_DIR / 'final_backtesting_v4.png')
+plt.savefig(OUTPUT_FIGURE_DIR / 'final_backtesting_v4.png')
 
 print("\n" + "="*50)
 print("FINAL SUMMARY (Strategy v4)")

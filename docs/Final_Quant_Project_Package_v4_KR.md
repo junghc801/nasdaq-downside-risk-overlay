@@ -24,7 +24,7 @@
 - 비용 민감도 및 스트레스 구간 분석
 
 ## v4 핵심 결과
-![Backtest v4](final_backtesting_v4.png)
+![Backtest v4](../outputs/figures/final_backtesting_v4.png)
 
 | 지표 | 값 |
 | --- | ---: |
@@ -107,17 +107,16 @@ v4는 다음을 반영합니다.
 - feature ablation은 최종 PnL보다 ranking 품질 변화에 더 크게 반응해, 모델 정보가 의사결정 계층에서 일부 흡수되고 있음을 시사함
 
 ## 이 버전에 포함된 파일
-- `quant_strategy_v4.py`
-- `final_backtesting_v4.png`
-- `cost_sensitivity_v4.csv`
-- `stress_analysis_v4.csv`
-- `target_sensitivity_v4.csv`
-- `signal_sensitivity_v4.csv`
-- `signal_diagnostics_v4.csv`
-- `feature_ablation_v4.csv`
-- `risk_decile_summary_v4.csv`
-- `Quant_Project_Technical_Report_v4.md`
-- `Quant_Project_Blog_Summary_v4.md`
+- `../src/quant_strategy_v4.py`
+- `../outputs/figures/final_backtesting_v4.png`
+- `../outputs/csv/cost_sensitivity_v4.csv`
+- `../outputs/csv/stress_analysis_v4.csv`
+- `../outputs/csv/target_sensitivity_v4.csv`
+- `../outputs/csv/signal_sensitivity_v4.csv`
+- `../outputs/csv/signal_diagnostics_v4.csv`
+- `../outputs/csv/feature_ablation_v4.csv`
+- `../outputs/csv/risk_decile_summary_v4.csv`
+- `Quant_Project_Technical_Report_v4_KR.md`
 
 ## 최종 정리
 v4는 시장을 이기는 long-only 대체 전략이 아닙니다.

@@ -155,7 +155,7 @@ Feature-group ablation changes PR-AUC more than final PnL.
 This implies that different feature blocks alter ranking quality, but much of that difference is still absorbed by the exposure-conversion layer.
 
 ### 9.4 Risk Deciles
-`risk_decile_summary_v4.csv` shows that probability ranking is not perfectly monotonic by realized event rate.  
+`../../outputs/csv/risk_decile_summary_v4.csv` shows that probability ranking is not perfectly monotonic by realized event rate.  
 That is a useful warning sign: calibration improved interpretability, but the probability surface is still coarse in places.
 
 ## 10. Limitations
@@ -173,12 +173,12 @@ The stronger claim is:
 "this strategy produces a more disciplined downside-risk overlay than static de-risking, with Sharpe above 1 and materially lower drawdown than buy-and-hold."
 
 ## 12. Files
-- `quant_strategy_v4.py`
-- `final_backtesting_v4.png`
-- `cost_sensitivity_v4.csv`
-- `stress_analysis_v4.csv`
-- `target_sensitivity_v4.csv`
-- `signal_sensitivity_v4.csv`
-- `signal_diagnostics_v4.csv`
-- `feature_ablation_v4.csv`
-- `risk_decile_summary_v4.csv`
+- `../../src/quant_strategy_v4.py`
+- `../../outputs/figures/final_backtesting_v4.png`
+- `../../outputs/csv/cost_sensitivity_v4.csv`
+- `../../outputs/csv/stress_analysis_v4.csv`
+- `../../outputs/csv/target_sensitivity_v4.csv`
+- `../../outputs/csv/signal_sensitivity_v4.csv`
+- `../../outputs/csv/signal_diagnostics_v4.csv`
+- `../../outputs/csv/feature_ablation_v4.csv`
+- `../../outputs/csv/risk_decile_summary_v4.csv`

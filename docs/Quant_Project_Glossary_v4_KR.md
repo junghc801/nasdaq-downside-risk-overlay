@@ -1,6 +1,6 @@
 # 퀀트 프로젝트 용어 해설 v4
 
-이 문서는 [Quant_Project_Blog_Summary_v4_KR.md](C:/Users/user/claude_test/quant_learning/quant_model_v4/Quant_Project_Blog_Summary_v4_KR.md) 를 읽을 때 자주 나오는 용어를 쉽게 참고할 수 있도록 만든 보조 문서입니다.
+이 문서는 NASDAQ 하방위험 오버레이 v4 자료를 읽을 때 자주 나오는 용어를 쉽게 참고할 수 있도록 만든 보조 문서입니다.
 
 ## 1. Quant / 퀀트 투자
 수학, 통계, 데이터 분석을 활용해 투자 의사결정을 만드는 접근입니다.  
